@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628165253) do
+ActiveRecord::Schema.define(version: 20160628192432) do
 
   create_table "courses", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
+    t.string   "name"
+    t.string   "image"
+    t.string   "description"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -26,12 +30,13 @@ ActiveRecord::Schema.define(version: 20160628165253) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "number"
-    t.string "organization"
-    t.string "role"
-    t.string "password_digest"
+    t.string  "name"
+    t.string  "email"
+    t.string  "number"
+    t.string  "organization"
+    t.string  "role"
+    t.string  "password_digest"
+    t.boolean "admin",           default: false
   end
 
 end

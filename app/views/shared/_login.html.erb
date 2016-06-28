@@ -1,20 +1,20 @@
-<p>Welcome back.</p>
-<%= form_for @student do |f| %>
+<h3>Welcome back.</h3>
+<%= form_tag sessions_path do |f| %>
   <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <%= f.text_field :email, html: {class: "validate"} %>
+          <%= text_field_tag :email %>
           <label for="icon_prefix">Email</label>
         </div>
         <div class="input-field col s6">
-          <%= f.password_field :password, html: {class: "validate"} %>
+          <%= password_field_tag :password %>
           <label for="icon_telephone">Password</label>
         </div>
       </div>
       <div class="modal-footer">
         <div class="row">
-          <%= f.submit :submit %>
+          <%= submit_tag "Submit" %>
         </div>
       </div>
     </form>

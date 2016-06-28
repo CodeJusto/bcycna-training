@@ -1,7 +1,5 @@
-class StudentsController < PrivateController
-
+class LessonsController < PrivateController
   def index
-
   end
 
   def new

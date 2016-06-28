@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+
 resources :students, only: [:index, :new, :create, :update, :destroy]
 
-resources :lessons, only: [:index, :new, :create, :update, :destroy]
+resources :courses, only: [:index, :create, :destroy] do
+  resources :lessons, only: [:index, :new, :create, :update, :destroy]
+end
 
-resources :courses, only: [:create, :destroy]
+post '/courses/filter', to: 'courses#filter'
 
 resources :sessions, only: [:create, :destroy]
 

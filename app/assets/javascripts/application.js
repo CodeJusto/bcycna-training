@@ -22,7 +22,44 @@
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
 
-    //Adds tab functionality
+    // Adds tab functionality
     $('ul.tabs').tabs();
+
+    // course filter
+    $('.filter').on('submit', function(e) {
+      e.preventDefault();
+      console.log("You hit enter!");
+    });
+
+    $('.filter').find('input').keyup(function(e) {
+      console.log($(this).val());
+      var filter = $(this).val();
+      $.ajax({
+        url: '/courses/filter',
+        method: 'post',
+        data: {filter: filter},
+        success: function(data) {
+          console.log(data)
+          $('.results').empty();
+          data.forEach(function(d) {
+              $('.results').append("<div class='col s4'>\
+                <div class='card'>\
+                  <div class='card-image'>\
+                    <img src= " + d.image + ">\
+                    <span class='card-title'>" + d.name + "</span>\
+                  </div>\
+                  <div class='card-content'>\
+                    <p>" + d.description + "</p>\
+                  </div>\
+                  <div class='card-action'>\
+                    <a href='#'>View Course</a>\
+                  </div>\
+                </div>\
+              </div>"
+          )});
+        }
+      })
+    });
+
   });
          

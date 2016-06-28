@@ -1,9 +1,10 @@
 class SessionsController < ApplicationController
   def create
-    @student = Student.find_by(email: params[:email], password: params[:password])
-    unless @student.nil? 
-      session[:id] = @student.id
-      redirect_to students_path
+    @student = Student.find_by(email: params[:email])
+
+    if @student && @student.authenticate(params[:password])
+      session[:user_id] = @student.id
+      redirect_to courses_path
     else
       # Add error toastbox
       redirect_to root_path
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:id] = nil
+    session[:user_id] = nil
     redirect_to root_path
   end
 end

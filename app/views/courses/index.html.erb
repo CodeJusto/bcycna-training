@@ -1,0 +1,22 @@
+<h1>Welcome <%= current_user.name %></h1>
+<div class="row">
+  <div class="col s12">
+    <%= form_tag courses_path, {class: 'filter'} %>
+    <div class="input-field col s6">
+      <%= text_field_tag :search %>
+      <label for="search">Filter Results</label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s8">
+    <div class="results">
+      <% unless @courses.nil? %>
+        <% @courses.each do |course| %>
+            <%= render 'course_list', course: course %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
