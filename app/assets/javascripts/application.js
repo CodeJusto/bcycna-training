@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
+
+ $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+
+    //Adds tab functionality
+    $('ul.tabs').tabs();
+  });
+         
