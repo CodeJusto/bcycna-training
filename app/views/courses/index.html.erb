@@ -10,10 +10,11 @@
 </div>
 
 <div class="row">
-  <div class="col s8">
+  <div class="col s12">
     <div class="results">
       <% unless @courses.nil? %>
         <% @courses.each do |course| %>
+
             <%= render 'course_list', course: course %>
         <% end %>
       <% end %>

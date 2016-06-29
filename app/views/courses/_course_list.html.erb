@@ -1,15 +1,19 @@
 
-<div class="col s4">
-  <div class="card">
+<div class="col s3">
+  <div class="card medium hoverable">
     <div class="card-image">
-      <img src= <%= course.image %> >
-      <span class="card-title"><%= course.name %></span>
+      <img class="activator" src= <%= course.image %> />
+      <span class="activator card-title"><%= course.name %></span>
     </div>
-    <div class="card-content">
-      <p><%= course.description %></p>
+    <div class="card-content activator">
+      Learn More
     </div>
     <div class="card-action">
-      <a href="#">View Course</a>
+      <%= link_to "View Course", course_lessons_path(course) %>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title"><%= course.name %></span>
+      <p><%= course.description %></p>
     </div>
   </div>
 </div>

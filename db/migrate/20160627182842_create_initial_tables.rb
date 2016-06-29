@@ -6,7 +6,6 @@ class CreateInitialTables < ActiveRecord::Migration
       t.string :number
       t.string :organization
       t.string :role
-      t.string :password_digest
     end
 
     create_table :lessons do |t|
