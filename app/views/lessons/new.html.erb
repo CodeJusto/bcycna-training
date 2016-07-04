@@ -1,3 +1,4 @@
+<%= tinymce_assets %>
 <%= form_for @lesson, html: { multipart: true }, url: { action:"create" } do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, id: "lesson_content", class: "tinymce" %>
   </div>
   <div class="field">
     <%= f.label :featured_image %><br>
@@ -27,3 +28,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= tinymce :plugins => ["wordcount", "imagetools"] %>

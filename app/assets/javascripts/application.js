@@ -17,6 +17,13 @@
 //= require jquery
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+//= require tinymce
+//= require tinymce-jquery
+
+  tinymce.init({
+    selector: 'textarea'
+  });
+
 
 function filterList() {
   $.ajax({
