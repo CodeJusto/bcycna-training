@@ -1,14 +1,17 @@
 <h3 class="center_align">Latest Lessons from <%= @course.name %></h3>
 <div class="row">
+  <%= link_to "Create a new lesson", new_course_lesson_path %>
+</div>
+<div class="row">
   <div class="col sm-6 offset-s3">
     <div class="collection">
       <% @lessons.each do |lesson| %>
-        <a href="#" class="collection-item avatar">
-          <img src=<%= lesson.featured_image %> />
-          <h4><%= lesson.name %></h4>
+        <div class="collection-item avatar">  
+          <img class="circle lesson-image" src=<%= lesson.featured_image %> />
+          <%= link_to lesson.name, course_lesson_path(params[:course_id], lesson.id) %> 
           <p><%= lesson.content.truncate_words(11) %></p>
           <span>Type: Reading</span>
-        </a>
+        </div>
       <% end %>
     </ul>
     </div>
