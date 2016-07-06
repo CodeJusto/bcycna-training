@@ -7,6 +7,13 @@ resources :courses, only: [:index, :create, :destroy] do
   resources :lessons, only: [:index, :new, :create, :update, :destroy, :show]
 end
 
+namespace :admin do
+  resources :students
+  resources :courses do
+    resources :lessons
+  end
+end 
+
 post '/courses/filter', to: 'courses#filter'
 
 resources :sessions, only: [:create, :destroy]

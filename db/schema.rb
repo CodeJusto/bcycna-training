@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628233852) do
+ActiveRecord::Schema.define(version: 20160706191814) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20160628233852) do
     t.string  "organization"
     t.string  "role"
     t.string  "password_digest"
-    t.boolean "admin",           default: false
+    t.boolean "is_admin",        default: false
   end
 
 end
