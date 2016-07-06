@@ -1,1 +1,11 @@
 <h1>Admin student panel</h1>
+
+<ul class="collection">
+  <% @students.each do |s| %>
+    <li class="collection-item">
+      <span class="title"><%= link_to s.name, admin_student_path(s) %></span>
+      <p><%= s.organization %><br>
+        <%= s.number %></p>
+    </li>
+  <% end %>
+</ul>

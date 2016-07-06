@@ -1,0 +1,14 @@
+<h3><%= @student.name %>'s profile</h3>
+
+<%= form_for @student, url: { action: :update } do |f| %>
+<%= f.label :name, "Name" %>
+<%= f.text_field :name%><br>
+<%= f.label :email, "Email" %>
+<%= f.text_field :email%><br>
+<%= f.label :password, "Password" %>
+<%= f.password_field :password%><br>
+<%= f.label :organization, "Organization" %>
+<%= f.text_field :organization%>
+<%= f.submit "Submit" %>
+
+<% end %>
