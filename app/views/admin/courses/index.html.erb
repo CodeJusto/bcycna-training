@@ -1,0 +1,25 @@
+<h1>Welcome admin <%= current_user.name %></h1>
+<div class="row">
+  <div class="col s12">
+    <%= form_tag courses_path, {class: 'filter'} %>
+    <div class="input-field col s6">
+      <%= text_field_tag :search %>
+      <label for="search">Filter Results</label>
+          <%= link_to "Create a new course", new_admin_course_path %>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <div class="results">
+      <% unless @courses.nil? %>
+        <% @courses.each do |course| %>
+
+            <%= render 'courses/course_list', course: course %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
