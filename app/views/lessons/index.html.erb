@@ -9,7 +9,7 @@
         <div class="collection-item avatar">  
           <img class="circle lesson-image" src=<%= lesson.featured_image %> />
           <%= link_to lesson.name, course_lesson_path(params[:course_id], lesson.id) %> 
-          <p><%= lesson.content.truncate_words(11) %></p>
+          <p><%= lesson.content.truncate_words(11).html_safe %></p>
           <span>Type: Reading</span>
         </div>
       <% end %>
