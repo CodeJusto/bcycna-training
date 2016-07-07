@@ -29,6 +29,12 @@ class Admin::LessonsController < AdminController
     redirect_to admin_course_lessons_path
   end
 
+  def destroy
+    @lesson = Lesson.find(params[:id])
+    @lesson.destroy
+    redirect_to admin_course_lessons_path
+  end
+
   private
 
   def lesson_params

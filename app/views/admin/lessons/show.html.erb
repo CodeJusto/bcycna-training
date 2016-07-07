@@ -2,6 +2,7 @@
 
 <h1>Now editing <%= @lesson.name %> for <%= @course.name %></h1>
   <%= link_to "Return to lesson list", admin_course_lessons_path %>
+  <%= link_to "Delete lesson", admin_course_lesson_path(@course, @lesson.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %>
 <%= form_for @lesson, html: { multipart: true }, url: {action:"update"} do |f| %>
  
   <div class="field">
