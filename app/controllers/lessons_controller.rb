@@ -19,6 +19,28 @@ class LessonsController < PrivateController
     @lesson = Lesson.find(params[:id])
   end
 
+  def next
+    @course = Course.find(params[:course_id])
+    @lesson = Lesson.find(params[:id])
+    @new_lesson = @course.lessons.where("id > ?", @lesson.id).first
+    unless @new_lesson.nil?
+      redirect_to course_lesson_path(@course, @new_lesson)
+    else
+      redirect_to course_lessons_path 
+    end
+  end
+
+  def previous
+    @course = Course.find(params[:course_id])
+    @lesson = Lesson.find(params[:id])
+    @new_lesson = @course.lessons.where("id < ?", @lesson.id).last
+    unless @new_lesson.nil?
+      redirect_to course_lesson_path(@course, @new_lesson)
+    else
+      redirect_to course_lessons_path
+    end
+  end
+
   def update
   end
 
