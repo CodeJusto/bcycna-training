@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
 
     if @student && @student.authenticate(params[:password])
       session[:user_id] = @student.id
-      redirect_to courses_path
+      if @student.is_admin?
+        redirect_to admin_courses_path
+      else
+        redirect_to courses_path
+      end
     else
       # Add error toastbox
       redirect_to root_path

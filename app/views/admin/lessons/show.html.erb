@@ -1,16 +1,8 @@
 <%= tinymce_assets %>
-<%= form_for @lesson, html: { multipart: true }, url: { action:"create" } do |f| %>
-  <% if @lesson.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this pet from being saved:</h2>
- 
-      <ul>
-      <% @lesson.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+<h1>Now editing <%= @lesson.name %> for <%= @course.name %></h1>
+  <%= link_to "Return to lesson list", admin_course_lessons_path %>
+<%= form_for @lesson, html: { multipart: true }, url: {action:"update"} do |f| %>
  
   <div class="field">
     <%= f.label :name %><br>
