@@ -15,6 +15,28 @@ class Admin::LessonsController < AdminController
     @lesson = Lesson.find(params[:id])
   end
 
+  def next
+    @course = Course.find(params[:course_id])
+    @lesson = Lesson.find(params[:id])
+    @new_lesson = @course.lessons.where("id > ?", @lesson.id).first
+    unless @new_lesson.nil?
+      redirect_to admin_course_lesson_path(@course, @new_lesson)
+    else
+      redirect_to admin_course_lessons_path 
+    end
+  end
+
+  def previous
+    @course = Course.find(params[:course_id])
+    @lesson = Lesson.find(params[:id])
+    @new_lesson = @course.lessons.where("id < ?", @lesson.id).last
+    unless @new_lesson.nil?
+      redirect_to admin_course_lesson_path(@course, @new_lesson)
+    else
+      redirect_to admin_course_lessons_path
+    end
+  end
+
   def create
     @course = Course.find(params[:course_id])
     @lesson = @course.lessons.new(lesson_params)

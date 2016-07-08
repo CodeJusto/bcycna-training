@@ -13,6 +13,8 @@ namespace :admin do
   resources :students
   resources :courses do
     resources :lessons
+      get '/lessons/:id/next', to: 'lessons#next', as: 'next_lesson'
+  get '/lessons/:id/previous', to: 'lessons#previous', as: 'previous_lesson'
   end
 end 
 
