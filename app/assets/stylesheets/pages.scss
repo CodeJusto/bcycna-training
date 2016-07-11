@@ -1,3 +1,48 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+.slider-text {
+  margin-top: -30%;
+  margin-bottom:10%;
+}
+
+.full-width-bar {
+  height: 400px;
+  margin: 0 -9999rem;
+  /* add back negative margin value */
+  padding: 0.25rem 9999rem;
+/*  background-image: url("http://s1.1zoom.net/big0/746/Canada_Mountains_Lake_460647.jpg");*/
+  background-color: #333;
+  }
+
+.full-width-bar > img {
+/*  -webkit-filter:brightness(20%);*/
+}
+
+.text-white {
+  color: #fff;
+}
+
+.publishers-box {
+  /*border: 1px #ccc solid;*/
+  margin-top: 50px;
+
+}
+
+.publishers-box .title {
+  display: inline-block;
+  margin-top: 10px;
+  /*color:#ccc;*/
+  font-size: 20px;
+}
+
+.publishers-box > img {
+  /*float:left;*/
+}

@@ -1,6 +1,6 @@
 
-<div class="col s3">
-  <div class="card medium hoverable">
+<div class="col s6">
+  <div class="card small hoverable">
     <div class="card-image">
       <img class="activator" src= <%= course.image %> />
       <span class="activator card-title"><%= course.name %></span>
@@ -12,7 +12,7 @@
       <%= link_to "View Course", admin_course_lessons_path(course) %>
     </div>
     <div class="card-reveal">
-      <span class="card-title"><%= course.name %></span>
+      <%= link_to course.name, admin_course_lessons_path(course) ,class: "card-title" %>>
       <p><%= course.description %></p>
     </div>
   </div>
