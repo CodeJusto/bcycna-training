@@ -4,6 +4,7 @@ class CoursesController < PrivateController
   end
 
   def filter
+    # byebug
     @filter = Course.where('description LIKE ? OR name LIKE ? AND role LIKE ?', "%#{params[:filter]}%", "%#{params[:filter]}%", "%#{params[:role]}%")
     render :json => @filter
   end

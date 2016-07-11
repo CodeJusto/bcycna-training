@@ -24,12 +24,12 @@
   });
 
 
-function filterList() {
+function filterList(filter) {
   $.ajax({
   url: '/courses/filter',
   method: 'post',
   data: {
-    filter: $('.filter').val(),
+    filter: filter,
   },
   success: function(data) {
     console.log(data)
@@ -86,10 +86,10 @@ function filterList() {
     // });
 
     $('.filter').find('input').keyup(function(e) {
-      console.log($(this).val());
+      console.log("Value: " + $(this).val());
       var filter = $(this).val();
       // var publisher = $('.publisher-button').data('publisher');
-      filterList();
+      filterList(filter);
     });
 
   });
