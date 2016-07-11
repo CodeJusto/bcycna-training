@@ -1,5 +1,3 @@
-<%= tinymce_assets %>
-
 <h1>Now editing <%= @lesson.name %> for <%= @course.name %></h1>
   <%= link_to "Return to lesson list", admin_course_lessons_path %><br>
   <%= link_to "Next lesson", admin_course_next_lesson_path(@course, @lesson) %><br>
@@ -10,6 +8,9 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
+  </div>
+  <div class="upload-image">
+    <a href="http://curvecommunications.com/wp-admin/upload.php?page=tnc-quick-uploader" target="_blank">Open example.com in an iframe</a>
   </div>
   <div class="field">
     <%= f.label :content %><br>
@@ -27,4 +28,4 @@
   </div>
 <% end %>
 
-<%= tinymce :plugins => ["wordcount", "imagetools, media, code"] %>
+

@@ -16,12 +16,8 @@
 //= require jquery
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
-//= require tinymce
-//= require tinymce-jquery
 
-  tinymce.init({
-    selector: 'textarea'
-  });
+
 
 
 function filterList(filter) {
@@ -38,7 +34,7 @@ function filterList(filter) {
         $('.results').append("<div class='col s3'>\
           <div class='card medium'>\
             <div class='card-image'>\
-              <img class='activator' src= " + d.image + ">\
+              <img class='activator' src=" + d.image.url + ">\
               <span class='activator card-title'>" + d.name + "</span>\
             </div>\
             <div class='card-content activator'>\
@@ -59,6 +55,17 @@ function filterList(filter) {
 } 
 
  $(document).ready(function(){
+
+    tinymce.init({
+      selector: '.tinymce',
+      plugins: [
+          "advlist autolink lists link image charmap print preview anchor",
+          "searchreplace visualblocks code fullscreen",
+          "insertdatetime media table contextmenu paste"
+      ],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+
     // Logout toast
     $('.logout').on('click', function() {
       Materialize.toast('You have been logged out.', 1000)
