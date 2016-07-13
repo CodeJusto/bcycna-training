@@ -54,7 +54,10 @@ function filterList(filter, role) {
 
  $(document).ready(function(){
 
+  // Default role is set to none
   var role = ""
+  // Default value of the search bar is set to it's contents
+  var filter = $('.filter').find('input').val();
 
     tinymce.init({
       selector: '.tinymce',
@@ -92,48 +95,64 @@ function filterList(filter, role) {
     //   filterList();
     // });
 
-    $('#publisher').on('click', function() {
-      role = "publisher";
-      $(this).css({"opacity":"0.5"});
+    function iconOpacity() {
       $('#sales').css({"opacity":"1"});
       $('#editor').css({"opacity":"1"});
       $('#reporter').css({"opacity":"1"});
+      $('#publisher').css({"opacity":"1"});
+    }
+
+    $('#publisher').on('click', function() {
+      iconOpacity();
+      if (role != "publisher") {
+        $(this).css({"opacity":"0.5"});
+        role = "publisher";
+      } else {
+        role = null;
+      }
+      filterList(filter, role)
       console.log(role);
     });
 
     $('#sales').on('click', function() {
-      role = "sales";
-      $(this).css({"opacity":"0.5"});
-      $('#publisher').css({"opacity":"1"});
-      $('#editor').css({"opacity":"1"});
-      $('#reporter').css({"opacity":"1"});
-
+      iconOpacity();
+      if (role != "sales") {
+        $(this).css({"opacity":"0.5"});
+        role = "sales";
+      } else {
+        role = "";
+      }
+      filterList(filter, role);
       console.log(role);
     });
 
     $('#editor').on('click', function() {
-      role = "editor";
-      $(this).css({"opacity":"0.5"});
-      $('#publisher').css({"opacity":"1"});
-      $('#sales').css({"opacity":"1"});
-      $('#reporter').css({"opacity":"1"});
-
+      iconOpacity();
+      if (role != "editor") {
+        $(this).css({"opacity":"0.5"});
+        role = "editor";
+      } else {
+        role = "";
+      }
+      filterList(filter, role)
       console.log(role);
     });
 
     $('#reporter').on('click', function() {
-      role = "reporter";
-      $(this).css({"opacity":"0.5"});
-      $('#publisher').css({"opacity":"1"});
-      $('#sales').css({"opacity":"1"});
-      $('#editor').css({"opacity":"1"});
-
+      iconOpacity();
+      if (role != "reporter") {
+        $(this).css({"opacity":"0.5"});
+        role = "reporter";
+      } else {
+        role = "";
+      }
+      filterList(filter, role)
       console.log(role);
     });
 
     $('.filter').find('input').keyup(function(e) {
       console.log("Value: " + $(this).val());
-      var filter = $(this).val();
+      filter = $(this).val();
       console.log("Role: " + role)
       // var publisher = $('.publisher-button').data('publisher');
       filterList(filter, role);

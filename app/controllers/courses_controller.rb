@@ -1,11 +1,23 @@
 class CoursesController < PrivateController
   def index
-    @courses = Course.where('status LIKE ?', "Published")
+    @courses = Course.where('status = ?', "Published")
   end
 
   def filter
-    @filter = Course.where('description LIKE ? OR name LIKE ? AND role LIKE ? AND status LIKE ?', "%#{params[:filter]}%", "%#{params[:filter]}%", "%#{params[:role]}%", "Published")
-    render :json => @filter
+    
+    if params[:filter] == "" || params[:filter] == "✓" 
+      if params[:role] == ""
+        @filter = Course.where('status = ?', "Published")
+      else
+        @filter = Course.where('role = ? AND status = ?', params[:role], "Published")
+      end
+    elsif params[:role] == ""
+      @filter = Course.where('name LIKE ? OR description LIKE ? AND status = ?' , "%" + params[:filter] + "%", "%" + params[:filter] + "%", "Published")
+    else
+      @selection = Course.where('role = ?', params[:role])
+      @filter = @selection.where('description LIKE ? OR name LIKE ? AND status = ?', "%" + params[:filter] + "%", "%" + params[:filter] + "%", "Published")
+    end
+    render :json => @filter 
   end
 
   def create
