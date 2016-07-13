@@ -3,17 +3,18 @@
   <div class="card small hoverable">
     <div class="card-image">
       <img class="activator" src= <%= course.image %> />
-      <span class="activator card-title"><%= course.name %></span>
     </div>
+    <span class="center-align course-card"><%= course.name %></span>
     <div class="card-content activator">
-      Learn More
     </div>
     <div class="card-action">
       <%= link_to "View Course", admin_course_lessons_path(course) %>
+      Status: <%= link_to course.status, admin_course_toggle_path(course), method: :post, data: {confirm: "Change the status of this course?"} %>
     </div>
     <div class="card-reveal">
-      <%= link_to course.name, admin_course_lessons_path(course) ,class: "card-title" %>>
+      <span class="card-title"><%= course.name %></span>
       <p><%= course.description %></p>
+
     </div>
   </div>
 </div>

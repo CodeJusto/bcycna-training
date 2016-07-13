@@ -1,0 +1,8 @@
+<div class="collection-item avatar">  
+  <img class="circle lesson-image" src=<%= lesson.featured_image %> />
+  <%= link_to lesson.name, admin_course_lesson_path(params[:course_id], lesson.id) %> 
+  <div class="lesson-image-container">
+    <p><%= lesson.content.truncate_words(11).html_safe %></p>
+    <p>Status: <%= link_to lesson.status, admin_course_lesson_toggle_path(@course.id, lesson.id), method: :post, action: 'toggle', data: {confirm: "Change the status of this lesson?"}  %></p>
+  </div>
+</div> 

@@ -1,0 +1,12 @@
+<h1>Edit <%= @course.name %></h1>
+
+
+<%= form_for @course, url:{action:"update"}, controller: "admin/courses" do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><b4>
+<%= f.label :description %>
+<%= f.text_field :description %><br>
+<%= f.label :image %><br>
+<%= f.file_field :image %>
+<%= f.submit "Submit" %>
+<% end %>

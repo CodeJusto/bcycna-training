@@ -1,4 +1,3 @@
-<%= tinymce_assets %>
 
 <h1>Create a new lesson for <%= @course.name %></h1>
 <%= form_for @lesson, html: { multipart: true }, url: { action:"create" } do |f| %>
@@ -30,5 +29,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<%= tinymce :plugins => ["wordcount", "imagetools, media, code"] %>

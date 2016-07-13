@@ -57,6 +57,13 @@ class Admin::LessonsController < AdminController
     redirect_to admin_course_lessons_path
   end
 
+  def toggle
+    @lesson = Lesson.find(params[:id])
+    @lesson.status === "Draft" ? @lesson.status = "Published" : @lesson.status = "Draft"
+    @lesson.save
+    redirect_to admin_course_lessons_path
+  end
+
   private
 
   def lesson_params

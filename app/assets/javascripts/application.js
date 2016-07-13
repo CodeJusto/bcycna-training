@@ -20,26 +20,24 @@
 
 
 
-function filterList(filter) {
+function filterList(filter, role) {
   $.ajax({
   url: '/courses/filter',
   method: 'post',
   data: {
     filter: filter,
+    role: role, 
   },
   success: function(data) {
     console.log(data)
     $('.results').empty();
     data.forEach(function(d) {
-        $('.results').append("<div class='col s3'>\
-          <div class='card medium'>\
+        $('.results').append("<div class='col s6'>\
+          <div class='card small hoverable'>\
             <div class='card-image'>\
               <img class='activator' src=" + d.image.url + ">\
-              <span class='activator card-title'>" + d.name + "</span>\
             </div>\
-            <div class='card-content activator'>\
-              <p>Learn more about this course by clicking here.</p>\
-            </div>\
+            <span class='center-align course-card'>" + d.name + "</span>\
             <div class='card-action'>\
               <a href='/courses/" + d.id + "/lessons'>View Course</a>\
             </div>\
@@ -55,6 +53,8 @@ function filterList(filter) {
 } 
 
  $(document).ready(function(){
+
+  var role = ""
 
     tinymce.init({
       selector: '.tinymce',
@@ -92,11 +92,51 @@ function filterList(filter) {
     //   filterList();
     // });
 
+    $('#publisher').on('click', function() {
+      role = "publisher";
+      $(this).css({"opacity":"0.5"});
+      $('#sales').css({"opacity":"1"});
+      $('#editor').css({"opacity":"1"});
+      $('#reporter').css({"opacity":"1"});
+      console.log(role);
+    });
+
+    $('#sales').on('click', function() {
+      role = "sales";
+      $(this).css({"opacity":"0.5"});
+      $('#publisher').css({"opacity":"1"});
+      $('#editor').css({"opacity":"1"});
+      $('#reporter').css({"opacity":"1"});
+
+      console.log(role);
+    });
+
+    $('#editor').on('click', function() {
+      role = "editor";
+      $(this).css({"opacity":"0.5"});
+      $('#publisher').css({"opacity":"1"});
+      $('#sales').css({"opacity":"1"});
+      $('#reporter').css({"opacity":"1"});
+
+      console.log(role);
+    });
+
+    $('#reporter').on('click', function() {
+      role = "reporter";
+      $(this).css({"opacity":"0.5"});
+      $('#publisher').css({"opacity":"1"});
+      $('#sales').css({"opacity":"1"});
+      $('#editor').css({"opacity":"1"});
+
+      console.log(role);
+    });
+
     $('.filter').find('input').keyup(function(e) {
       console.log("Value: " + $(this).val());
       var filter = $(this).val();
+      console.log("Role: " + role)
       // var publisher = $('.publisher-button').data('publisher');
-      filterList(filter);
+      filterList(filter, role);
     });
 
   });

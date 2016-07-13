@@ -12,9 +12,12 @@ end
 namespace :admin do
   resources :students
   resources :courses do
+    post '/toggle', to: 'courses#toggle'
+
     resources :lessons
       get '/lessons/:id/next', to: 'lessons#next', as: 'next_lesson'
-  get '/lessons/:id/previous', to: 'lessons#previous', as: 'previous_lesson'
+      get '/lessons/:id/previous', to: 'lessons#previous', as: 'previous_lesson'
+      post '/lessons/:id/lesson_toggle', to: 'lessons#toggle', as: 'lesson_toggle'
   end
 end 
 

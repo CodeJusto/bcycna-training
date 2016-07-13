@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     @student = Student.find_by(email: params[:email])
 
     if @student && @student.authenticate(params[:password])
-      session[:user_id] = @student.id
+      session[:key] = @student.key
       if @student.is_admin?
         redirect_to admin_courses_path
       else
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:key] = nil
     redirect_to root_path
   end
 end

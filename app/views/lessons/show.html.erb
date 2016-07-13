@@ -1,6 +1,6 @@
 <h1><%= @lesson.name %></h1>
-<%= link_to "Return to index", course_lessons_path(@course) %>
-<%= link_to "Next lesson", course_next_lesson_path(@course, @lesson) %>
+<%= link_to "Return to index", course_lessons_path(@course) %><br>
+<%= link_to "Next lesson", course_next_lesson_path(@course, @lesson) %><br>
 <% unless @lesson.id === 0 %>
 <%= link_to "Previous lesson", course_previous_lesson_path(@course, @lesson) %>
 <% end %>

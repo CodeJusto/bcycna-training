@@ -1,11 +1,13 @@
 <h1>Admin student panel</h1>
-
+<%= link_to "Create a new student", new_admin_student_path %>
 <ul class="collection">
   <% @students.each do |s| %>
     <li class="collection-item">
       <span class="title"><%= link_to s.name, admin_student_path(s) %></span>
       <p><%= s.organization %><br>
-        <%= s.number %></p>
+        <%= s.number %><br>
+        <%= link_to "Delete student?", admin_student_path(s.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %>
+      </p>
     </li>
   <% end %>
 </ul>

@@ -41,6 +41,7 @@ class LessonsController < PrivateController
     end
   end
 
+
   def update
   end
 

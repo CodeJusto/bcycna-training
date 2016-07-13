@@ -1,3 +1,4 @@
+require 'securerandom'
 class Admin::StudentsController < AdminController
 
   def index
@@ -8,10 +9,30 @@ class Admin::StudentsController < AdminController
     @student = Student.find(params[:id])
   end
 
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+    if @student.save 
+      redirect_to admin_students_path
+    else
+      #Add error message here
+      redirect_to admin_students_path
+    end
+  end
+
   def update
     @student = Student.find(params[:id])
     @student.update_attributes(student_params)
     render :show
+  end
+
+  def destroy 
+    @student = Student.find(params[:id])
+    @student.destroy
+    redirect_to admin_students_path
   end
 
 protected
@@ -21,4 +42,4 @@ protected
   end
 
 
-end
+end 
