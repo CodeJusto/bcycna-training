@@ -33,7 +33,7 @@ function filterList(filter, role) {
     $('.results').empty();
     data.forEach(function(d) {
         $('.results').append("<div class='col s6'>\
-          <div class='card small hoverable'>\
+          <div class='card medium hoverable'>\
             <div class='card-image'>\
               <img class='activator' src=" + d.image.url + ">\
             </div>\

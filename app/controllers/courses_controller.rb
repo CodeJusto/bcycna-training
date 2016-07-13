@@ -4,8 +4,11 @@ class CoursesController < PrivateController
   end
 
   def filter
-    
+    # First check determines whether or not anything is entered into the search box
+    # Checkmark is a default value of forms that cannot be overridden unless user clicks the box,
+    # So we are including it here
     if params[:filter] == "" || params[:filter] == "✓" 
+      # Checks to see if a button has been pressed given an empty field
       if params[:role] == ""
         @filter = Course.where('status = ?', "Published")
       else
